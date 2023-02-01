@@ -110,8 +110,8 @@ type Mechanism interface {
 	AcceptSecContext(ct ContextToken) (bool, context.Context, Status) // service verifies the token server side to establish a context
 	MIC() MICToken                                                    // apply integrity check, receive as token separate from message
 	VerifyMIC(mt MICToken) (bool, error)                              // validate integrity check token along with message
-	Wrap(msg []byte) WrapToken                                        // sign, optionally encrypt, encapsulate
-	Unwrap(wt WrapToken) []byte                                       // decapsulate, decrypt if needed, validate integrity check
+	Wrap(msg []byte) WrapTokenV1                                      // sign, optionally encrypt, encapsulate
+	Unwrap(wt WrapTokenV1) []byte                                     // decapsulate, decrypt if needed, validate integrity check
 }
 
 // OIDName is the type for defined GSS-API OIDs.
